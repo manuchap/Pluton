@@ -1,0 +1,89 @@
+---
+{
+  "name": "Home",
+  "icon": "header",
+  "keep_icon": true,
+  "keep_name": true,
+  "settings": [
+    {
+      "label": "Show Home",
+      "id": "show",
+      "type": "checkbox"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "label": "Title",
+          "id": "title",
+          "type": "text"
+        },
+        {
+          "label": "Subtitle",
+          "id": "subtitle",
+          "type": "text"
+        },
+        {
+          "label": "Text",
+          "id": "text",
+          "type": "text",
+          "html": true
+        },
+        {
+          "label": "Button",
+          "id": "btn",
+          "type": "checkbox"
+        },
+        {
+          "label": "Button link",
+          "id": "btnlink",
+          "type": "url"
+        },
+        {
+          "label": "Button text",
+          "id": "btntxt",
+          "type": "text"
+        },
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        }
+      ]
+    }
+  ]
+}
+---
+{% if section.settings.show == true %}
+<script type="text/javascript">document.getElementById("home_lnk").style.display = "inline-block";</script>
+<div id="home">
+  <div id="da-slider" class="da-slider">
+    <div class="triangle"></div>
+    <div class="mask"></div>
+    <div class="container">
+      {% for block in section.blocks %}
+      <div class="da-slide">
+        <h2 class="fittext2">{{ block.settings.title }}</h2>
+        <h4>{{ block.settings.subtitle }}</h4>
+        <p>{{ block.settings.text }}</p>
+        {% if block.settings.btn == true %}
+        <a href="{{ block.settings.btnlink }}" class="da-link button">{{ block.settings.btntxt }}</a>
+        {% endif %}
+        <div class="da-img">
+          <img src="{{ block.settings.image }}" alt="image01" width="320">
+        </div>
+      </div>
+      {% endfor %}
+      <div class="da-arrows">
+        <span class="da-arrows-prev"></span>
+        <span class="da-arrows-next"></span>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<script type="text/javascript">document.getElementById("home_lnk").style.display = "none";</script>
+{% endif %}

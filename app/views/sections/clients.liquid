@@ -1,0 +1,132 @@
+---
+{
+  "name": "Clients",
+  "icon": "slide",
+  "keep_icon": true,
+  "keep_name": true,
+  "settings": [
+    {
+      "label": "Show Clients",
+      "id": "show",
+      "type": "checkbox"
+    },
+    {
+      "label": "Title",
+      "id": "title",
+      "type": "text"
+    },
+    {
+      "label": "Subtitle",
+      "id": "subtitle",
+      "type": "text"
+    },
+    {
+      "label": "Quote",
+      "id": "quote",
+      "type": "text"
+    },
+    {
+      "label": "Show Clients Caroussel",
+      "id": "showc",
+      "type": "checkbox"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Testimonial",
+      "type": "testimonial",
+      "settings": [
+        {
+          "label": "Client",
+          "id": "client",
+          "type": "text"
+        },
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Testimonial",
+          "id": "testimonial",
+          "type": "text",
+          "html": true
+        }
+      ]
+    },
+    {
+      "name": "Client",
+      "type": "client",
+      "settings": [
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Link",
+          "id": "link",
+          "type": "url"
+        }
+      ]
+    }
+  ]
+}
+---
+{% if section.settings.show == true %}
+<script type="text/javascript">document.getElementById("clients_lnk").style.display = "inline-block";</script>
+  <div id="clients">
+    <div class="section primary-section">
+      <div class="triangle"></div>
+      <div class="container">
+        <div class="title">
+          <h1>{{ section.settings.title }}</h1>
+          <p>{{ section.settings.subtitle }}</p>
+        </div>
+        <div class="row">
+          {% for block in section.blocks | limit: 3 %}
+          <div class="span4">
+            <div class="testimonial">
+              <p>"{{ block.settings.testimonial }}"</p>
+              <div class="whopic">
+                <div class="arrow"></div>
+                <img src="{{ block.settings.image }}" class="centered" alt="client 1">
+                <strong>{{ block.settings.client }}<small>Client</small></strong>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <p class="testimonial-text"> "{{ section.settings.quote }}"</p>
+      </div>
+    </div>
+  </div>
+  {% if section.settings.showc == true %}
+  <div class="section third-section">
+    <div class="container centered">
+      <div class="sub-section">
+        <div class="title clearfix">
+          <div class="pull-left">
+            <h3>Our Clients</h3>
+          </div>
+          <ul class="client-nav pull-right">
+            <li id="client-prev"></li>
+            <li id="client-next"></li>
+          </ul>
+        </div>
+        <ul class="row client-slider" id="clint-slider">
+          {% for block in section.blocks %}
+          <li>
+            <a href="{{ block.settings.link }}">
+              <img src="{{ block.settings.image }}" alt="client logo">
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% else %}
+<script type="text/javascript">document.getElementById("clients_lnk").style.display = "none";</script>
+{% endif %}

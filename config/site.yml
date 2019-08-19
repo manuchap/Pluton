@@ -1,0 +1,26 @@
+name: "Pluton"
+locales: [en]
+seo_title: Pluton Theme by BraphBerry.com
+meta_keywords: "some meta keywords"
+meta_description: "some meta description"
+metafields:
+  contact:
+    tel1: +11 234 567 890
+    tel2: +11 286 543 850
+    address1: 123 Fifth Avenue
+    address2: 12th,Belgrade,SRB 11000
+    email: ourstudio@somemail.com
+  social:
+    facebook: https://www.facebook.com/
+    twitter: https://twitter.com/
+    linkedin: https://www.linkedin.com/
+    pinterest: https://www.pinterest.com/
+    dribbble: https://www.dribble.com/
+  email_settings:
+    subject: "Email from Pluton"
+    smtp_address: "smtp.gmail.com"
+    smtp_port: 587
+    smtp_user_name: ""
+    smtp_password: ""
+  theme:
+    main_color: ""

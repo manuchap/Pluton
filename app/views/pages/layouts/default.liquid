@@ -1,0 +1,71 @@
+---
+title: Default layout
+is_layout: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.seo_title }}</title>
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ 'ico/apple-touch-icon-144.png' | theme_image_url }}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ 'ico/apple-touch-icon-114.png' | theme_image_url }}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ 'ico/apple-touch-icon-72.png' | theme_image_url }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ 'ico/apple-touch-icon-57.png' | theme_image_url }}">
+  <link rel="shortcut icon" href="{{ 'ico/favicon.ico' | theme_image_url }}">
+  {{ 'bundle.css' | stylesheet_tag }}
+  {% include 'theme' %}
+  {{ 'modernizr.custom.js' | javascript_tag }}
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="#" class="brand">
+          <img src="{{ 'logo.png' | theme_image_url }}" width="120" height="40" alt="Logo" />
+        </a>
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><i class="icon-menu"></i></button>
+        <div class="nav-collapse collapse pull-right">
+          <ul class="nav" id="top-navigation">
+            <li class="active" id="home_lnk" style="display:none">
+              <a href="#home">Home</a>
+            </li>
+            <li id="service_lnk" style="display:none">
+              <a href="#service">Services</a>
+            </li>
+            <li id="portfolio_lnk" style="display:none">
+              <a href="#portfolio">Portfolio</a>
+            </li>
+            <li id="about_lnk" style="display:none">
+              <a href="#about">About</a>
+            </li>
+            <li id="clients_lnk" style="display:none">
+              <a href="#clients">Clients</a>
+            </li>
+            <li id="price_lnk" style="display:none">
+              <a href="#price">Price</a>
+            </li>
+            <li id="contact_lnk" style="display:none">
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block 'main' %}
+  {% endblock %}
+  <div class="footer">
+    <p>&copy; 2013 Theme by
+      <a href="http://www.graphberry.com">GraphBerry</a>,
+      <a href="http://goo.gl/NM84K2">Documentation</a>
+    </p>
+  </div>
+  <div class="scrollup">
+    <a href="#"><i class="icon-up-open"></i></a>
+  </div>
+  {{ 'bundle.js' | javascript_tag }}
+  {% unless wagon %}<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=initializeMap" async defer></script>{% endunless %}
+  {% if wagon %}<script src="http://localhost:35729/livereload.js"></script>{% endif %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+contact:
+  label: Contact
+  fields:
+    tel1:
+      type: string
+    tel2:
+      type: string
+    address1:
+      type: string
+    address2:
+      type: string
+    email:
+      type: string
+social:
+  label: Social networks
+  fields:
+    - facebook
+    - twitter
+    - linkedin
+    - pinterest
+    - dribbble
+email_settings:
+  label: Email server
+  fields:
+    - subject
+    - smtp_address
+    - smtp_port
+    - smtp_user_name
+    - smtp_password
+theme:
+  label: Theme
+  fields:
+    main_color:
+      type: color

@@ -1,0 +1,39 @@
+{% assign main_color = site.metafields.theme.main_color %}
+{% if main_color %}
+<style>
+a:hover {color: {{ main_color }};}
+h1,.navbar .nav>.active>a,.navbar .nav>.active>a:hover,.navbar .nav>.active>a:focus,.navbar .nav > li:hover > a {border: 1px solid {{ main_color }};}
+.navbar .btn-navbar:hover,.navbar .btn-navbar {background: {{ main_color }};}
+.button-sp:visited,.button-sp:focus {background-color: {{ main_color }};}
+.button-sp:hover,.button-sp:active {color: {{ main_color }};}
+.button-ps,.button-ps:visited,.button-ps:focus {color: {{ main_color }};}
+.button-ps:hover,.button-ps:active {background-color: {{ main_color }};}
+.button-sp, .button-sp:visited, .button-sp:focus{background-color: {{ main_color }};}
+.da-slider .mask{background-color: {{ main_color }};}
+.thumbnail h3 {color: {{ main_color }};}
+.social li a {color: {{ main_color }};}
+.primary-section .triangle {border-top: 40px solid {{ main_color }};}
+.primary-section,.primary-section .title p,.primary-section h3 {color: {{ main_color }};}
+.secondary-section {background: {{ main_color }};}
+.secondary-section .title {border-bottom: 1px solid #181A1C;}
+.third-section {border-top: 6px solid {{ main_color }};}
+.third-section .container {padding-top: 20px;}
+.third-section .title {color: {{ main_color }};}
+.service img {background-color: {{ main_color }};}
+.project-title {border-bottom: 1px solid {{ main_color }};}
+.project-title .close {color: {{ main_color }};}
+.project-info span,.project-title h3 {color: {{ main_color }};}
+.team .thumbnail .mask {background: {{ main_color }};}
+.skills li .bar {background-color: {{ main_color }};}
+.client-slider img:hover {background-color: {{ main_color }};}
+.client-nav li a {background: {{ main_color }};}
+.testimonial p {background: {{ main_color }};}
+.testimonial .arrow {border-top: 10px solid {{ main_color }};}
+.price-column h3 {color: {{ main_color }};}
+.contact {background: {{ main_color }};}
+.message-btn:hover {background-color: {{ main_color }};}
+.footer a {color: {{ main_color }};}
+.footer a:hover,.footer a:focus {background: {{ main_color }};}
+.scrollup {background: {{ main_color }};}
+{% endif %}
+</style>

@@ -1,0 +1,23 @@
+---
+title: Send
+handle: sendmail
+published: true
+listed: false
+---
+{% action "send an email" %}
+  var emailSettings = getProp('site').metafields.email_settings;
+  sendEmail({
+    to: emailSettings.smtp_user_name,
+    from: emailSettings.smtp_user_name,
+    subject: emailSettings.subject,
+    page_handle: 'email-template',
+    smtp: {
+      address: emailSettings.smtp_address,
+      port: emailSettings.smtp_port,
+      user_name: emailSettings.smtp_user_name,
+      password: emailSettings.smtp_password,
+      authentication: 'plain',
+      enable_starttls_auto: true
+    }
+  });
+{% endaction %}{"success":true}

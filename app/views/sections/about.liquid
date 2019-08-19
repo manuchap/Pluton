@@ -1,0 +1,257 @@
+---
+{
+  "name": "About",
+  "icon": "image_text",
+  "keep_icon": true,
+  "keep_name": true,
+  "settings": [
+    {
+      "label": "Show About",
+      "id": "show",
+      "type": "checkbox"
+    },
+    {
+      "label": "Title",
+      "id": "title",
+      "type": "text"
+    },
+    {
+      "label": "Subtitle",
+      "id": "subtitle",
+      "type": "text"
+    },
+    {
+      "label": "Show About Us",
+      "id": "showa",
+      "type": "checkbox"
+    },
+    {
+      "label": "About title",
+      "id": "abtitle",
+      "type": "text"
+    },
+    {
+      "label": "About text",
+      "id": "abtext",
+      "type": "text",
+      "html": true
+    },
+    {
+      "label": "Show Skills",
+      "id": "shows",
+      "type": "checkbox"
+    },
+    {
+      "label": "Skill One",
+      "id": "sk1t",
+      "type": "text"
+    },
+    {
+      "label": "Skill One level",
+      "id": "sk1l",
+      "type": "text"
+    },
+    {
+      "label": "Skill Two",
+      "id": "sk2t",
+      "type": "text"
+    },
+    {
+      "label": "Skill Two level",
+      "id": "sk2l",
+      "type": "text"
+    },
+    {
+      "label": "Skill Three",
+      "id": "sk3t",
+      "type": "text"
+    },
+    {
+      "label": "Skill Three level",
+      "id": "sk3l",
+      "type": "text"
+    },
+    {
+      "label": "Skill Four",
+      "id": "sk4t",
+      "type": "text"
+    },
+    {
+      "label": "Skill Four level",
+      "id": "sk4l",
+      "type": "text"
+    },
+    {
+      "label": "Text block title",
+      "id": "sktbti",
+      "type": "text"
+    },
+    {
+      "label": "Button text",
+      "id": "sktbbt",
+      "type": "text"
+    },
+    {
+      "label": "Button link",
+      "id": "sktbbl",
+      "type": "url"
+    },
+    {
+      "label": "Show About footer",
+      "id": "showe",
+      "type": "checkbox"
+    },
+    {
+      "label": "About footer text",
+      "id": "abfttx",
+      "type": "text"
+    },
+    {
+      "label": "About footer button text",
+      "id": "abftbt",
+      "type": "text"
+    },
+    {
+      "label": "About footer button link",
+      "id": "abftbl",
+      "type": "url"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Person",
+      "type": "person",
+      "settings": [
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Name",
+          "id": "name",
+          "type": "text"
+        },
+        {
+          "label": "Job",
+          "id": "job",
+          "type": "text"
+        },
+        {
+          "label": "Description",
+          "id": "desc",
+          "type": "text",
+          "html": true
+        },
+        {
+          "label": "Facebook",
+          "id": "fb",
+          "type": "text"
+        },
+        {
+          "label": "Twitter",
+          "id": "tw",
+          "type": "text"
+        },
+        {
+          "label": "Linkedin",
+          "id": "li",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+---
+{% if section.settings.show == true %}
+<script type="text/javascript">document.getElementById("about_lnk").style.display = "inline-block";</script>
+  <div class="section primary-section" id="about">
+    <div class="triangle"></div>
+    <div class="container">
+      <div class="title">
+        <h1>{{ section.settings.title }}</h1>
+        <p>{{ section.settings.subtitle }}</p>
+      </div>
+      <div class="row-fluid team">
+        {% for block in section.blocks %}
+        <div class="span4" id="person-{{ forloop.index }}">
+          <div class="thumbnail">
+            <img src="{{ block.settings.image }}" alt="{{ block.settings.name }}">
+            <h3>{{ block.settings.name }}</h3>
+            <ul class="social">
+              <li>
+                <a href="{{ block.settings.fb }}">
+                  <span class="icon-facebook-circled"></span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ block.settings.tw }}">
+                  <span class="icon-twitter-circled"></span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ block.settings.li }}">
+                  <span class="icon-linkedin-circled"></span>
+                </a>
+              </li>
+            </ul>
+            <div class="mask">
+              <h2>{{ block.settings.job }}</h2>
+              <p>{{ block.settings.desc }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if section.settings.showa == true %}
+      <div class="about-text centered">
+        <h3>{{ section.settings.abtitle }}</h3>
+        <p>{{ section.settings.abtext }}</p>
+      </div>
+      {% endif %}
+      {% if section.settings.shows == true %}
+      <h3>Skills</h3>
+      <div class="row-fluid">
+        <div class="span6">
+          <ul class="skills">
+            <li>
+              <span class="bar" data-width="{{ section.settings.sk1l }}%"></span>
+              <h3>{{ section.settings.sk1t }}</h3>
+            </li>
+            <li>
+              <span class="bar" data-width="{{ section.settings.sk2l }}%"></span>
+              <h3>{{ section.settings.sk2t }}</h3>
+            </li>
+            <li>
+              <span class="bar" data-width="{{ section.settings.sk3l }}%"></span>
+              <h3>{{ section.settings.sk3t }}</h3>
+            </li>
+            <li>
+              <span class="bar" data-width="{{ section.settings.sk4l }}%"></span>
+              <h3>{{ section.settings.sk4t }}</h3>
+            </li>
+          </ul>
+        </div>
+        <div class="span6">
+          <div class="highlighted-box center">
+            <h1>{{ section.settings.sktbti }}</h1>
+            <p>{{ section.settings.sktbco }}</p>
+            <a href="{{ section.settings.sktbbl }}"><button class="button button-sp">{{ section.settings.sktbbt }}</button></a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if section.settings.showe == true %}
+  <div class="section secondary-section">
+    <div class="triangle"></div>
+    <div class="container centered">
+      <p class="large-text">{{ section.settings.abfttx }}</p>
+      <a href="{{ section.settings.abftbl }}" class="button">{{ section.settings.abftbt }}</a>
+    </div>
+  </div>
+  {% endif %}
+{% else %}
+<script type="text/javascript">document.getElementById("about_lnk").style.display = "none";</script>
+{% endif %}

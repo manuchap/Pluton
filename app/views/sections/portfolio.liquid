@@ -1,0 +1,137 @@
+---
+{
+  "name": "Portfolio",
+  "icon": "list",
+  "keep_icon": true,
+  "keep_name": true,
+  "settings": [
+    {
+      "label": "Show Portfolio",
+      "id": "show",
+      "type": "checkbox"
+    },
+    {
+      "label": "Title",
+      "id": "title",
+      "type": "text"
+    },
+    {
+      "label": "Subtitle",
+      "id": "subtitle",
+      "type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Client",
+      "type": "client",
+      "settings": [
+        {
+          "label": "Client",
+          "id": "client",
+          "type": "text"
+        },
+        {
+          "label": "Date",
+          "id": "Date",
+          "type": "text"
+        },
+        {
+          "label": "Skills",
+          "id": "skills",
+          "type": "text"
+        },
+        {
+          "label": "Link",
+          "id": "link",
+          "type": "url"
+        },
+        {
+          "label": "Description",
+          "id": "desc",
+          "type": "text",
+          "html": true
+        },
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Filter",
+          "id": "filter",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+---
+{% if section.settings.show == true %}
+<script type="text/javascript">document.getElementById("portfolio_lnk").style.display = "inline-block";</script>
+<div class="section secondary-section" id="portfolio">
+  <div class="triangle"></div>
+  <div class="container">
+    <div class=" title">
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+    <ul class="nav nav-pills">
+      <li class="filter" data-filter="all">
+        <a href="#noAction">All</a>
+      </li>
+      {% for block in section.blocks %}
+      {% unless filter contains block.settings.filter %}
+      {% assign filter = filter | append: block.settings.filter %}
+      <li class="filter" data-filter="{{ block.settings.filter }}">
+        <a href="#noAction">{{ block.settings.filter | capitalize }}</a>
+      </li>
+      {% endunless %}
+      {% endfor %}
+    </ul>
+    <div id="single-project">
+      {% for block in section.blocks %}
+      <div id="slidingDiv{{ forloop.index }}" class="toggleDiv row-fluid single-project">
+        <div class="span6">
+          <img src="{{ block.settings.image }}" alt="{{ block.settings.client }}">
+        </div>
+        <div class="span6">
+          <div class="project-description">
+            <div class="project-title clearfix">
+              <h3>Website for {{ block.settings.client }}</h3>
+              <span class="show_hide close"><i class="icon-cancel"></i></span>
+            </div>
+            <div class="project-info">
+              <div>
+                <span>Client</span>{{ block.settings.client }}</div>
+              <div>
+                <span>Date</span>{{ block.settings.date }}</div>
+              <div>
+                <span>Skills</span>{{ block.settings.skills }}</div>
+              <div>
+                <span>Link</span>{{ block.settings.link }}</div>
+            </div>
+            <p>{{ block.settings.desc }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <ul id="portfolio-grid" class="thumbnails row">
+        {% for block in section.blocks %}
+        <li class="span4 mix {{ block.settings.filter }}">
+          <div class="thumbnail">
+            <img src="{{ block.settings.image }}" alt="{{ block.settings.client }}">
+            <a href="#single-project" class="more show_hide" rel="#slidingDiv{{ forloop.index }}"><i class="icon-plus"></i></a>
+            <h3>{{ block.settings.client }}</h3>
+            <p>{{ block.settings.skills }}</p>
+            <div class="mask"></div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% else %}
+<script type="text/javascript">document.getElementById("portfolio_lnk").style.display = "none";</script>
+{% endif %}

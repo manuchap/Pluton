@@ -1,0 +1,74 @@
+---
+{
+  "name": "Service",
+  "icon": "image_text",
+  "keep_icon": true,
+  "keep_name": true,
+  "settings": [
+    {
+      "label": "Show Services",
+      "id": "show",
+      "type": "checkbox"
+    },
+    {
+      "label": "Title",
+      "id": "title",
+      "type": "text"
+    },
+    {
+      "label": "Subtitle",
+      "id": "subtitle",
+      "type": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Service",
+      "type": "service",
+      "settings": [
+        {
+          "label": "Image",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Title",
+          "id": "title",
+          "type": "text"
+        },
+        {
+          "label": "Subtitle",
+          "id": "subtitle",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+---
+{% if section.settings.show == true %}
+<script type="text/javascript">document.getElementById("service_lnk").style.display = "inline-block";</script>
+<div class="section primary-section" id="service">
+  <div class="container">
+    <div class="title">
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="row-fluid">
+      {% for block in section.blocks %}
+      <div class="span4">
+        <div class="centered service">
+          <div class="circle-border zoom-in">
+            <img class="img-circle" src="{{ block.settings.image }}" alt="{{ block.settings.title }}">
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.subtitle }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% else %}
+<script type="text/javascript">document.getElementById("service_lnk").style.display = "none";</script>
+{% endif %}
